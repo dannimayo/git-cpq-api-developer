@@ -1,5 +1,20 @@
 public class CPQQuotingAPI {
 
+    //TODO: create @InvocableMethod readQuote.. 
+    //1 takes the CPQAPIFactoryDTO.ReadQuoteAPIRequest
+    //2 extracts quoteId 
+    //3 calls this.readQuoteAPI
+    //4 returns CPQAPIFactoryDTO.ReadQuoteAPIResponse
+
+    //TODO: create @InvocableMethod readProduct..
+    
+    //TODO: create @InvocableMethod addProducts.. 
+
+    //TODO: create @InvocableMethod calculateQuote..
+
+    //TODO: create @InvocableMethod saveQuote..
+
+
     //get quoteModel
     public CPQFactoryDTO.QuoteModel readQuoteAPI(String quoteId) {
         String quoteJSON = SBQQ.ServiceRouter.read('SBQQ.QuoteAPI.QuoteReader', quoteId);
