@@ -1,14 +1,14 @@
-public class CPQQuotingFactory {
+public class CPQQuotingAPI {
 
     //get quoteModel
-    public CPQFactoryDTO.QuoteModel readQuote(String quoteId) {
+    public CPQFactoryDTO.QuoteModel readQuoteAPI(String quoteId) {
         String quoteJSON = SBQQ.ServiceRouter.read('SBQQ.QuoteAPI.QuoteReader', quoteId);
         return (CPQFactoryDTO.QuoteModel) JSON.deserialize(quoteJSON, CPQFactoryDTO.QuoteModel.class);
     }
 
 
     //get productModel
-    public CPQFactoryDTO.ProductModel readProduct(Id productId, Id pricebookId, String currencyCode) {
+    public CPQFactoryDTO.ProductModel readProductAPI(Id productId, Id pricebookId, String currencyCode) {
         ProductReaderContext ctx = new ProductReaderContext(pricebookId, currencyCode);
         String productJSON = SBQQ.ServiceRouter.load('SBQQ.ProductAPI.ProductLoader', productId, JSON.serialize(ctx));
         return (CPQFactoryDTO.ProductModel) JSON.deserialize(productJSON, CPQFactoryDTO.ProductModel.class);
@@ -26,7 +26,7 @@ public class CPQQuotingFactory {
 
 
     //get quoteModel with products
-    public CPQFactoryDTO.QuoteModel addProducts(CPQFactoryDTO.QuoteModel quote, CPQFactoryDTO.ProductModel[] products, Integer groupKey) {
+    public CPQFactoryDTO.QuoteModel addProductsAPI(CPQFactoryDTO.QuoteModel quote, CPQFactoryDTO.ProductModel[] products, Integer groupKey) {
         AddProductsContext ctx = new AddProductsContext(quote, products, groupKey);
         String quoteJSON = SBQQ.ServiceRouter.load('SBQQ.QuoteAPI.QuoteProductAdder', null, JSON.serialize(ctx));
         return (CPQFactoryDTO.QuoteModel) JSON.deserialize(quoteJSON, CPQFactoryDTO.QuoteModel.class);
@@ -47,7 +47,7 @@ public class CPQQuotingFactory {
     
     
     //send quoteModel to calculate
-    public void calculateQuote(CPQFactoryDTO.QuoteModel quote, String callbackClass) {
+    public void calculateQuoteAPI(CPQFactoryDTO.QuoteModel quote, String callbackClass) {
         QuoteCalculatorContext ctx = new QuoteCalculatorContext(quote, callbackClass);
         SBQQ.ServiceRouter.load('SBQQ.QuoteAPI.QuoteCalculator', null, JSON.serialize(ctx));    
     }    
@@ -64,16 +64,13 @@ public class CPQQuotingFactory {
 
 
     //send quoteModel to save
-    public CPQFactoryDTO.QuoteModel saveQuote(CPQFactoryDTO.QuoteModel quote) {
+    public CPQFactoryDTO.QuoteModel saveQuoteAPI(CPQFactoryDTO.QuoteModel quote) {
         String quoteJSON = SBQQ.ServiceRouter.save('SBQQ.QuoteAPI.QuoteSaver', JSON.serialize(quote));
         return (CPQFactoryDTO.QuoteModel) JSON.deserialize(quoteJSON, CPQFactoryDTO.QuoteModel.class);
     }
     
       
     
-
-
-
 
 
 

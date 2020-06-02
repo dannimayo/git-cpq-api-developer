@@ -26,10 +26,6 @@
 		<members>ChatterActivity</members>
 		<members>CollaborationGroup</members>
 		<members>CollaborationGroupMember</members>
-		<members>CommSubscription</members>
-		<members>CommSubscriptionChannelType</members>
-		<members>CommSubscriptionConsent</members>
-		<members>CommSubscriptionTiming</members>
 		<members>ConsumptionRate</members>
 		<members>ConsumptionSchedule</members>
 		<members>Contact</members>
@@ -41,7 +37,6 @@
 		<members>ContactRequest</members>
 		<members>ContentVersion</members>
 		<members>Contract</members>
-		<members>ContractContactRole</members>
 		<members>DandBCompany</members>
 		<members>DataUseLegalBasis</members>
 		<members>DataUsePurpose</members>
@@ -82,7 +77,6 @@
 		<members>PromptAction</members>
 		<members>QuickText</members>
 		<members>QuickTextUsage</members>
-		<members>Recommendation</members>
 		<members>RecordAction</members>
 		<members>RecordMergeHistory</members>
 		<members>RevenueElement</members>
