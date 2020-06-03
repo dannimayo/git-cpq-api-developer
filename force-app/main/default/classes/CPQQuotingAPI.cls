@@ -2,10 +2,13 @@ public class CPQQuotingAPI {
 
     //TODO: create @InvocableMethod readQuote..
     @InvocableMethod(label='readQuote')
-    public List<CPQAPIFactoryDTO.ReadQuoteAPIResponse> readQuote(List<CPQAPIFactoryDTO.ReadQuoteAPIRequest> request){
+    public static List<CPQAPIFactoryDTO.ReadQuoteAPIResponse> readQuote(List<CPQAPIFactoryDTO.ReadQuoteAPIRequest> request){
         CPQAPIFactoryDTO.ReadQuoteAPIRequest req = request.get(0);
-        CPQAPIFactoryDTO.ReadQuoteAPIResponse resp = readQuoteAPI(req.quoteId);
-        return new List<CPQAPIFactoryDTO.ReadQuoteAPIResponse>(resp);
+        CPQFactoryDTO.QuoteModel response = readQuoteAPI(req.quoteId);
+
+        CPQAPIFactoryDTO.ReadQuoteAPIResponse returnResponse = new CPQAPIFactoryDTO.ReadQuoteAPIResponse();
+        returnResponse.quote = response;
+        return new List<CPQAPIFactoryDTO.ReadQuoteAPIResponse>{returnResponse};
         //1 takes the CPQAPIFactoryDTO.ReadQuoteAPIRequest
         //2 extracts quoteId 
         //3 calls this.readQuoteAPI
@@ -14,12 +17,12 @@ public class CPQQuotingAPI {
 
     //TODO: create @InvocableMethod readProduct..
     public List<CPQAPIFactoryDTO.ReadProductAPIResponse> readProduct(List<CPQAPIFactoryDTO.ReadProductAPIRequest> request){
-        
+        return new List<CPQAPIFactoryDTO.ReadProductAPIResponse>();
     }
     
     //TODO: create @InvocableMethod addProducts.. 
     public List<CPQAPIFactoryDTO.AddProductsAPIResponse> addProducts(List<CPQAPIFactoryDTO.AddProductsAPIRequest> request){
-        
+        return new List<CPQAPIFactoryDTO.AddProductsAPIResponse>();
     }
 
     //TODO: create @InvocableMethod calculateQuote..
@@ -29,7 +32,7 @@ public class CPQQuotingAPI {
 
     //TODO: create @InvocableMethod saveQuote..
     public List<CPQAPIFactoryDTO.SaveQuoteAPIResponse> saveQuote(List<CPQAPIFactoryDTO.SaveQuoteAPIRequest> request){
-        
+        return new List<CPQAPIFactoryDTO.SaveQuoteAPIResponse>();
     }
 
     /*
@@ -40,7 +43,7 @@ public class CPQQuotingAPI {
 
 
     //get quoteModel
-    public CPQFactoryDTO.QuoteModel readQuoteAPI(String quoteId) {
+    public static CPQFactoryDTO.QuoteModel readQuoteAPI(String quoteId) {
         String quoteJSON = SBQQ.ServiceRouter.read('SBQQ.QuoteAPI.QuoteReader', quoteId);
         return (CPQFactoryDTO.QuoteModel) JSON.deserialize(quoteJSON, CPQFactoryDTO.QuoteModel.class);
     }
