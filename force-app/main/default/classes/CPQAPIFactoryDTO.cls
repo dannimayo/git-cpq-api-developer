@@ -35,11 +35,11 @@ public class CPQAPIFactoryDTO {
 
     public class CalculateQuoteAPIRequest{
 
-        //todo
+        @InvocableVariable
+        public CPQFactoryDTO.QuoteModel quote;
 
-        //todo
-
-        //todo
+        @InvocableVariable
+        public String callbackClass;
 
     }
 
@@ -47,9 +47,6 @@ public class CPQAPIFactoryDTO {
 
         @InvocableVariable
         public CPQFactoryDTO.QuoteModel quote;
-
-        @InvocableVariable
-        public String callbackClass;
 
     }
 
