@@ -4,7 +4,7 @@ public class CPQProductLoaderAPI {
     public static List<CPQAPIFactoryDTO.ReadProductAPIResponse> readProduct(List<CPQAPIFactoryDTO.ReadProductAPIRequest> flowInput){
         CPQAPIFactoryDTO.ReadProductAPIRequest req = flowInput.get(0);
         CPQAPIFactoryDTO.ReadProductAPIResponse resp = new CPQAPIFactoryDTO.ReadProductAPIResponse();
-        resp.product = readProduct(req.productId, req.pricebookId, req.currencyCode);
+        resp.product = JSON.serialize(readProductAPI(req.productId, req.pricebookId, req.currencyCode));
         System.debug('This is the response from readProductAPI & set to CPQAPIFactoryDTO.ReadProductAPIResponse: \n' + resp);
 
         return new List<CPQAPIFactoryDTO.ReadProductAPIResponse>{resp};

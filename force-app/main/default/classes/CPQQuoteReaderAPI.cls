@@ -4,7 +4,7 @@ public class CPQQuoteReaderAPI {
     public static List<CPQAPIFactoryDTO.ReadQuoteAPIResponse> readQuote(List<CPQAPIFactoryDTO.ReadQuoteAPIRequest> flowInput){
         CPQAPIFactoryDTO.ReadQuoteAPIRequest req = flowInput.get(0);
         CPQAPIFactoryDTO.ReadQuoteAPIResponse resp = new CPQAPIFactoryDTO.ReadQuoteAPIResponse();
-        resp.quote = readQuoteAPI(req.quoteId);
+        resp.quote = JSON.serialize(readQuoteAPI(req.quoteId));
         System.debug('This is the response from readQuoteAPI & set to CPQAPIFactoryDTO.ReadQuoteAPIResponse: \n' + resp);
 
         return new List<CPQAPIFactoryDTO.ReadQuoteAPIResponse>{resp};

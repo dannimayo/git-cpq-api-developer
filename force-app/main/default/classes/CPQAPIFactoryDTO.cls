@@ -23,62 +23,67 @@ public class CPQAPIFactoryDTO {
     public class AddProductsAPIRequest{
 
         @InvocableVariable
-        public CPQFactoryDTO.QuoteModel quote;
+        public String quote;
+        //public CPQFactoryDTO.QuoteModel quote
 
         @InvocableVariable
-        public CPQFactoryDTO.ProductModel[] products;
+        public List<String> products;
+        //public CPQFactoryDTO.ProductModel[] products;
 
         @InvocableVariable
-        public Integer groupKey;
+        public Integer groupKey = 0;
 
     }
 
     public class CalculateQuoteAPIRequest{
 
         @InvocableVariable
-        public CPQFactoryDTO.QuoteModel quote;
+        public String quote;
+        //public CPQFactoryDTO.QuoteModel quote;
 
         @InvocableVariable
-        public String callbackClass;
+        public String callbackClass = 'CPQPricingCallbackWithSave';
 
     }
 
     public class SaveQuoteAPIRequest{
 
         @InvocableVariable
-        public CPQFactoryDTO.QuoteModel quote;
+        public String quote;
+        //public CPQFactoryDTO.QuoteModel quote;
 
     }
 
-
+    //
     //responses start here
+    //
 
     public class ReadQuoteAPIResponse{
 
         @InvocableVariable
-        public CPQFactoryDTO.QuoteModel quote;
-
+        public String quote;
+        //public CPQFactoryDTO.QuoteModel quote; --using String so we can use text vars in flow vs apex-defined vars
     }
 
     public class ReadProductAPIResponse{
         
         @InvocableVariable
-        public CPQFactoryDTO.ProductModel product;
-
+        public String product;
+        //public CPQFactoryDTO.ProductModel product;
     }
 
     public class AddProductsAPIResponse{
 
         @InvocableVariable
-        public CPQFactoryDTO.QuoteModel quote;
-
+        public String quote;
+        //public CPQFactoryDTO.QuoteModel quote
     }
 
     public class SaveQuoteAPIResponse{
 
         @InvocableVariable
-        public CPQFactoryDTO.QuoteModel quote;
-
+        public String quote;
+        //public CPQFactoryDTO.QuoteModel quote;  
     }
     
 

@@ -3,8 +3,9 @@ public class CPQQuoteCalculatorAPI {
     @InvocableMethod(label = 'calculateQuote')
     public static void calculateQuote(List<CPQAPIFactoryDTO.CalculateQuoteAPIRequest> flowInput){
         CPQAPIFactoryDTO.CalculateQuoteAPIRequest req = flowInput.get(0);
+        CPQFactoryDTO.QuoteModel quoteModel = (CPQFactoryDTO.QuoteModel) JSON.deserialize(req.quote, CPQFactoryDTO.QuoteModel.class);
         
-        calculateQuoteAPI(req.quote, req.callbackClass);
+        calculateQuoteAPI(quoteModel, req.callbackClass);
     }
 
 
